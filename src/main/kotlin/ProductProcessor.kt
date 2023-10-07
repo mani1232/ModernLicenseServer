@@ -1,3 +1,1 @@
-
-class ProductProcessor(val products: List<Product> ) {
-}
+class ProductProcessor(val products: List<Product>)

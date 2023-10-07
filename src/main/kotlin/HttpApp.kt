@@ -3,12 +3,11 @@ import io.jooby.caffeine.CaffeineSessionStore
 import io.jooby.kt.Kooby
 import io.jooby.netty.NettyServer
 import io.jooby.rocker.RockerModule
-import jakarta.json.bind.JsonbBuilder
-import jakarta.json.bind.JsonbConfig
+import webApi.v1.V1
+import webApi.v2.V2
 
 class HttpApp : Kooby({
     install(NettyServer())
-    val jsonb = JsonbBuilder.create(JsonbConfig().withNullValues(true).withFormatting(true).withEncoding("UTF-8"))
     install(RockerModule())
 
     serverOptions {
@@ -16,22 +15,17 @@ class HttpApp : Kooby({
         sessionStore = CaffeineSessionStore()
         compressionLevel = 6
         ssl = SslOptions.selfSigned("X509")
-        //isHttpsOnly = true
+        //isHttpsOnly = true // Only https?
         defaultHeaders = true
         isHttp2 = true
         securePort = 8443
         port = 8080
     }
 
-    coroutine {
-        get("/test") {
-            "ok"
-        }
-        get("/*") {
-            test.template(this.ctx.protocol)
-        }
-        get("/object") { //Json example
-            jsonb.toJson(TestData("TestTExt"))
-        }
+    get("/*") {
+        test.template(this.ctx.protocol)
     }
+
+    mount("/v1", V1())
+    mount("/v2", V2()) // in dev, more features than v1
 })
