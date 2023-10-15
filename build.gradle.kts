@@ -14,6 +14,10 @@ repositories {
 }
 
 dependencies {
+    // https://mvnrepository.com/artifact/com.fizzed/rocker-compiler
+    implementation("com.fizzed:rocker-compiler:1.4.0")
+    // https://mvnrepository.com/artifact/com.fizzed/rocker-runtime
+    implementation("com.fizzed:rocker-runtime:1.4.0")
     // https://mvnrepository.com/artifact/io.jooby
     implementation("io.jooby:jooby-kotlin:3.0.5")
     implementation("io.jooby:jooby-netty:3.0.5")
