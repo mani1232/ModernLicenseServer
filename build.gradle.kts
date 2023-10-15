@@ -31,7 +31,7 @@ dependencies {
 }
 
 rocker {
-    version.set("1.3.0")
+    version.set("1.4.0")
     configurations {
         create("main") {
             optimize.set(true)
