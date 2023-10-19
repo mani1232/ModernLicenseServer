@@ -1,7 +1,6 @@
 plugins {
     kotlin("multiplatform") version "1.9.20-RC"
     application
-    java
 }
 
 group = "ua.mani123"
@@ -18,6 +17,14 @@ dependencies {
 kotlin {
     js {
         browser {
+            //webpackTask {
+            //    mainOutputFileName = "chat.js"
+            //}
+            commonWebpackConfig {
+                cssSupport {
+                    enabled.set(true)
+                }
+            }
         }
         binaries.executable()
     }

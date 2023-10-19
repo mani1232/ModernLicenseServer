@@ -1,9 +1,9 @@
-@args (String title)
+@args (String title, String[] messages)
 
 @otherContent => {
 <h1>testtttttt</h1>
 }
 
-@index.template(title, otherContent) -> {
+@index.template(title, messages, otherContent) -> {
 i am in the body
 }

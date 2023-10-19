@@ -1,11 +1,21 @@
-@args (String title, RockerContent otherContent, RockerBody content)
+@args (String title, String[] messages, RockerContent otherContent, RockerBody content)
 
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>@title</title>
 </head>
 <body>
 @otherContent
 @content
+<h1>Чат</h1>
+<div id="chatMessages">
+    @for (String message : messages) {
+    <div>@message</div>
+    }
+</div>
+<input type="text" id="messageInput" placeholder="Введите сообщение">
+<button id="sendButton">Отправить</button>
+<script src="js/kotlin-js.js"></script>
 </body>
 </html>

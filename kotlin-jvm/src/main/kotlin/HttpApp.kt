@@ -5,10 +5,13 @@ import io.jooby.netty.NettyServer
 import io.jooby.rocker.RockerModule
 import webApi.v1.V1
 import webApi.v2.V2
+import java.util.*
 
 class HttpApp : Kooby({
     install(NettyServer())
     install(RockerModule())
+
+    val messages = mutableListOf("init")
 
     serverOptions {
         server = "Netty"
@@ -23,7 +26,14 @@ class HttpApp : Kooby({
     }
 
     get("/*") {
-        test.template(this.ctx.protocol)
+        test.template(this.ctx.protocol, messages.toTypedArray())
+    }
+
+    ws("/chat") {
+        configurer.onMessage { ws, message ->
+            messages.add(message.value())
+            ws.send(message.value())
+        }
     }
 
     mount("/v1", V1())

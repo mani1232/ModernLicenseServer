@@ -1,9 +1,8 @@
 plugins {
-    application
-    java
     id("com.github.johnrengelman.shadow") version "8.1.1"
     id("nu.studer.rocker") version "3.0.4"
     kotlin("jvm") version "1.9.20-RC"
+    application
 }
 
 group = "ua.mani123"
