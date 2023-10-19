@@ -8,7 +8,7 @@ build/
 !**/src/test/**/build/
 
 ### Rocker ###
-src/generated
+kotlin-jvm/src/generated
 
 ### IntelliJ IDEA ###
 .idea/

@@ -10,3 +10,5 @@ plugins {
 }
 
 rootProject.name = "ModernLicenseServer"
+include("kotlin-js")
+include("kotlin-jvm")
