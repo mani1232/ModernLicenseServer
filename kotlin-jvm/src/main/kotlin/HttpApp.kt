@@ -34,6 +34,17 @@ class HttpApp : Kooby({
             messages.add(message.value())
             ws.send(message.value())
         }
+        configurer.onConnect { ws ->
+            log.info("Connected")
+        }
+
+        configurer.onClose { ws, statusCode ->
+            log.info(statusCode.code.toString())
+        }
+
+        configurer.onError { ws, cause ->
+            log.info(cause.message)
+        }
     }
 
     mount("/v1", V1())
