@@ -26,7 +26,7 @@ class HttpApp : Kooby({
     }
 
     get("/*") {
-        test.template(this.ctx.protocol, messages.toTypedArray())
+        test.template(this.ctx.protocol, messages)
     }
 
     ws("/chat") {
