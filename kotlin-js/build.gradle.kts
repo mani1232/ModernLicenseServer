@@ -12,7 +12,7 @@ repositories {
 }
 
 dependencies {
-
+    implementation(npm("memfs", "> 4.6.0 <=4.6.0"))
 }
 
 kotlin {
